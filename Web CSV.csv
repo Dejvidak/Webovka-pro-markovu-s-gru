@@ -1,0 +1,580 @@
+;;;;
+;Název webu / značky;;;
+;;;;
+;Aureum Vellum;;;
+;Chovatelská stanice retrívrů;;;
+;;;;
+;Tohle se bude používat:;;;
+;v logu;;;
+;v titulku webu;;;
+;v patičce;;;
+;v SEO názvu stránek;;;
+;;;;
+;DOMÉNA A ZNAČKA;;;
+;;;;
+;;Položka;Hodnota / zadání;Poznámka
+;;Název značky;Aureum Vellum;Používat v logu a titulcích
+;;Typ projektu;Web chovatelské stanice psů;Kvůli SEO a struktuře
+;;Hlavní doména;(např.) aureumvellum.cz;Pokud ještě není koupená, uvést preferovanou
+;;Alternativní domény;aureum-vellum.cz / aureumvellum.eu;Ochrana značky (volitelné)
+;;Jazyk webu;Čeština;Důležité pro strukturu webu
+;;E-mailová adresa;např. info@aureumvellum.cz;Bude napojená na formuláře
+;;Zobrazovaný název v patičce;Chovatelská stanice Aureum Vellum;Konzistentní branding
+
+;;;;
+;GLOBÁLNÍ TECHNICKÉ POŽADAVKY (CELÝ WEB);;;
+;Cílem je web, který bude dlouhodobě udržitelný: chci sama přidávat psy, vrhy, aktuality a články, vkládat galerie a videa, aktualizovat dokumentaci a ;;;
+;spravovat odkazy na sociální sítě. Web musí být rychlý, bezpečný, responzivní a připravený na budoucí rozšíření (e-shop a akce s rezervacemi a kapacitou).;;;
+;;;;
+;Oblast;Požadavek;Co to znamená v praxi;Poznámka pro vývojáře
+;Responzivita;Web musí perfektně fungovat na mobilu;Menu, tlačítka, galerie, formuláře;Mobile-first
+;Rychlost;Optimalizace obrázků + lazy-load;Automatická komprese, moderní formáty, načítání až při scrollu;Důležité kvůli fotkám štěňat
+;SEO – základ;Titulky, popisky, struktura;Page title, meta description, H1/H2, URL struktura;Každá stránka unikátní
+;SEO – obrázky;ALT texty;Možnost doplnit ALT v administraci;Pomáhá vyhledávání
+;SEO – indexace;sitemap.xml + robots.txt;Automatické generování;—
+;OpenGraph;Náhledy při sdílení;FB/IG sdílení článků a stránek;OG title, image, description
+;Administrace (CMS);Správa obsahu bez kódu;Přidávání psů, vrhů, článků, fotek, dokumentů;Intuitivní editor
+;Role uživatelů;Přístupová práva;Admin vs. editor (volitelné);Bezpečnost
+;Bezpečnost;HTTPS;Certifikát, přesměrování na https;Standard
+;Bezpečnost formulářů;Antispam;reCAPTCHA/honeypot + rate limiting;Nutné
+;GDPR;Souhlas ve formuláři + zásady;Checkbox, stránka „Ochrana osobních údajů“;Povinné
+;Cookies lišta;Cookie banner;Souhlas/odmítnutí analytiky (pokud bude);Dle použitého měření
+;Analytika;Měření návštěvnosti;GA4 / Matomo (volitelné);Až bude potřeba
+;Zálohy;Pravidelné zálohování;DB + soubory;Frekvence dle hostingu
+;Obnova;Možnost obnovy webu;Postup při havárii;Popsat v předání
+;Logování chyb;Monitoring;Záznam chyb a výpadků;Volitelné, ale super
+;Údržba;Aktualizace systému;Aktualizace pluginů/CMS;Domluvit režim správy
+;Multimédia;Galerie a videa;Lightbox pro fotky, videa přes embed;Neuploadovat videa na server
+;Přesměrování;301 redirect;Pokud se změní URL, neztratit SEO;—
+;Přístupnost;Základní a11y;Kontrast textu, popisky, ovladatelnost;Elegantní, ale čitelné
+;E-mail doručitelnost;Formuláře musí chodit;Odesílání přes SMTP;Aby to nepadalo do spamu
+;Doména a e-maily;Nastavení DNS;SPF/DKIM/DMARC pro e-mail (pokud bude);Doporučené
+;Budoucí rozšíření;E-shop a rezervace;Připravené místo v menu + možnost modulů;Aby se nepředělával web
+;;;;
+;;;;
+;Doplňkový mini-list: „Co musí jít spravovat v administraci“;;;
+;;;;
+;Prvek;Správa v administraci;Poznámka;
+;Psi (fena/pes/odchov);Přidat/upravit/smazat;Šablona profilu;
+;Vrh;Přidat/upravit + stav (aktuální/plán/minulý);Propojit rodiče;
+;Aktuality vrhu;Přidávat zápisky s fotkami;Datum + text + galerie;
+;Novinky (blog);Přidat článek + fotky + video embed;Kategorie/štítky;
+;Zdraví & dokumentace;Text + seznamy + obrázky dokumentů;Lightbox, bez stažení;
+;Kontakty;Telefon/e-mail/IG/FB odkazy;Editovat bez kódu;
+;Homepage bloky;Vybrané „featured“ věci;Top pes, top vrh, poslední články;
+
+;;;;;
+;Hlavní položka menu;Typ položky;Co se stane po kliknutí;Podstránky / podmenu;Obsah stránky (co tam má být)
+;Domů;Odkaz na stránku;Otevře úvodní (rolovací) stránku;—;Hero fotka + slogan, krátké O nás, náhled Naši psi, zvýraznění aktuálního vrhu, jak probíhá odchov, novinky, sekce sociální sítě, kontakt
+1;O nás;Samostatná stránka;Otevře stránku o chovatelské stanici;—;Příběh vzniku chovky Aurum Vellum, vztah k retrívrům, způsob života psů (domácí prostředí), přístup k chovu, filozofie chovu, fotky ze života
+2;Naši psi;Rozbalovací menu + přehledová stránka;Otevře hlavní stránku „Naši psi“ s rozcestníkem;Feny / Psi (krycí) / Odchovy;Úvodní text o významu chovných psů, následně rozdělení na feny, psy a odchovy (každá položka vede na seznam psů)
+;Naši psi → Feny;Podstránka;Seznam všech chovných fen;Profily jednotlivých fen;U každé feny: jméno, foto, krátká charakteristika, odkaz na detail
+;Naši psi → Psi (krycí);Podstránka;Seznam krycích psů;Profily jednotlivých psů;Stejná struktura jako u fen
+;Naši psi → Odchovy;Podstránka;Mladí psi odchovaní v CHS;Profily / galerie;Fotky a informace o odchovech
+3;Štěňata;Rozbalovací menu + přehledová stránka;Otevře hlavní stránku o štěňatech;Aktuální vrh / Plánované vrhy / Minulé vrhy;Obecné informace o odchovu, podmínky odběru, co štěně dostane, koho hledáme
+;Štěňata → Aktuální vrh;Podstránka;Detail aktuálního vrhu;—;Rodiče vrhu, datum narození, odběr, vývoj štěňat, galerie, info pro zájemce
+;Štěňata → Plánované vrhy;Podstránka;Informace o budoucích spojeních;—;Předpokládané spojení, plánované období
+;Štěňata → Minulé vrhy;Podstránka;Archiv vrhů;Jednotlivé vrhy;Fotky, info o rodičích, případně odkazy na odchovy
+4;Zdraví a dokumentace;Samostatná stránka;Otevře stránku s důvěryhodností;—;Vysvětlení PP, přehled zdravotních testů, genetické testy, osvědčení o chovce, výstavy a zkoušky
+5;Novinky & život s námi;Samostatná stránka (blog);Otevře přehled článků;Jednotlivé články;Aktuality z chovky, vývoj vrhů, úspěchy psů, běžný život
+6;Kontakt;Samostatná stránka;Otevře kontaktní stránku;Formulář;Kontaktní údaje + formulář pro zájemce o štěně
+7;(Do budoucna) E-shop;Samostatná stránka;Otevře e-shop;Kategorie produktů;Výbavičky, obojky, merch chovky
+8;(Do budoucna) Akce & rezervace;Samostatná stránka;Otevře kalendář akcí;Detail akce;Přehled akcí + možnost rezervace termínu
+;;;;;
+;;;;;
+;TECHNICKÉ POŽADAVKY;;;;
+;Funkce;Popis požadavku;Poznámka pro vývojáře;;
+;Sekce jako bloky;Úvodní stránka je složená z více bloků (Hero, O nás, Naši psi, Aktuální vrh, Odchov, Novinky, Sociální sítě, Kontakt);Bloky snadno přehoditelné/skrývatelné;;
+;CTA tlačítka;Tlačítka vedoucí na klíčové stránky (Aktuální vrh, Naši psi, Štěňata, Kontakt);Správné prolinkování;;
+;Náhled Naši psi;Zobrazit vybrané 2–3 psy jako “featured”;Výběr v administraci;;
+;Náhled Aktuální vrh;Umět zvýraznit jeden aktivní vrh;Automaticky bere „aktuální“;;
+;Náhled Novinek;Zobrazit poslední 3–6 článků;Automatické načtení z blogu;;
+;Sekce Sociální sítě;Tlačítka/ikonky IG+FB + (volitelně) náhled posledních postů;Náhled postů jen pokud to nebude zpomalovat web;;
+;Responzivita;Vše čitelné na mobilu, CTA tlačítka dobře kliknutelná;Mobile-first;;
+;Rychlost;Fotky optimalizované, lazy-load;Důležité kvůli velkým fotkám;;
+
+
+;;;;;
+;;;;;
+;SOCIÁLNÍ SÍTĚ (UMÍSTĚNÍ NA WEBU);;;;
+;;;;;
+;Umístění;Typ prvku;Účel;Obsah;Poznámka pro vývojáře
+;Horní lišta (header);Ikony;Rychlý přístup;Ikona Instagram + Facebook;Otevírat v novém okně
+;Úvodní stránka – samostatná sekce;Obsahová sekce;Propojení webu s každodenním životem;Nadpis „Sledujte život naší chovatelské stanice“ + krátký text + tlačítka IG/FB;Umístění: mezi „Novinky & život s námi“ a „Kontakt“
+;Patička (footer);Ikony + text;Standardní umístění kontaktů;IG + FB + případně název profilu;Zobrazeno na všech stránkách
+;Stránka Kontakt;Ikony;Alternativní způsob spojení;IG + FB odkazy;Pod kontaktními údaji
+;;;;;
+;;;TECHNICKÉ POŽADAVKY – SOCIÁLNÍ SÍTĚ;;
+;;;Funkce;Popis požadavku;Poznámka
+;;;Správa odkazů;URL na IG a FB editovatelné v administraci;Ne natvrdo v kódu
+;;;Otevírání odkazů;Otevírat v novém okně;"target=""_blank"""
+;;;Ikony v headeru;Malé, decentní, vpravo nahoře;Ladit s designem (zlaté)
+;;;Sekce na homepage;Možnost upravit text i fotky v této sekci;Fotky samostatně editovatelné
+;;;Volitelný náhled feedu;Možnost zobrazit poslední příspěvky z IG;Jen pokud to nebude zpomalovat web
+;;;Footer;Ikony zobrazené automaticky na všech stránkách;Součást globální patičky
+;;;;;
+;DŮLEŽITÉ PRO STRUKTURU MENU;;;;
+;;;;;
+;🔹 Sociální sítě NEJSOU samostatná položka v hlavním menu;;;;
+;(nevedou na interní stránku webu);;;;
+;;;;;
+;Místo toho:;;;;
+;✔ jsou viditelné stále (header + footer);;;;
+;✔ mají vlastní obsahovou sekci na úvodní stránce;;;;
+;✔ jsou zmíněné i na stránce Kontakt;;;;
+;;;;;
+;To je moderní a nepůsobí to, že „posíláš lidi pryč z webu“.;;;;
+
+;;;;;
+;Pořadí sekce;Název sekce;Účel sekce;Obsah (co přesně má být napsané / zobrazené);Poznámky pro vývojáře
+;1;Úvodní hero blok;Emoční představení chovky;Velká světlá fotka retrívra nebo společná fotka se psem. Krátký text: „Chovatelská stanice Aurum Vellum vznikla z lásky k retrívrům a obdivu k jejich laskavé povaze, inteligenci a oddanosti rodině.“;Stejný vizuální styl jako homepage (bílá, zlaté prvky, vzdušné)
+;2;Jak to začalo;Osobní příběh;Text o tom, jak ses dostala k plemeni retrívr, proč právě toto plemeno, první zkušenosti se psy;Spíš osobní tón, ne formální
+;3;Naši psi jako členové rodiny;Ukázat podmínky, ve kterých psi žijí;Popis, že psi žijí doma, jsou součástí rodiny, mají kontakt s lidmi, nejsou v kotcích;Doplnit fotky ze společného života
+;4;Náš přístup k chovu;Vysvětlit filozofii chovu;Důraz na zdraví, povahu, vyrovnanost, pečlivý výběr spojení, malý počet vrhů, individuální péče o štěňata;Klíčová důvěryhodná sekce
+;5;Co je pro nás důležité;Hodnoty chovky;Krátké body např.: ✔ zdraví ✔ povaha ✔ socializace ✔ odpovědný výběr majitelů ✔ dlouhodobý kontakt s rodinami;Může být formou ikon nebo odrážek
+;6;Prostředí, kde štěňata vyrůstají;Přiblížit odchov;Popis domácího prostředí, zvykání na běžný ruch, manipulace, podněty;Fotky prostředí (pelíšky, zahrada, interiér)
+;7;Spojení s budoucími majiteli;Ukázat, že vztah nekončí prodejem;Text: že ráda zůstáváš v kontaktu, pomáháš s výchovou, zajímáš se o další život štěňat;Posiluje důvěru
+;8;Závěrečná výzva;Přesměrování dál;Krátká věta: „Chcete se dozvědět více o našich psech nebo plánovaných vrzích?“;Dvě tlačítka: „Naši psi“ a „Štěňata“
+;;;;;
+;;;;;
+;Celkový tón stránky;;;;
+;;Osobní, lidský, ale stále profesionální;;;
+;;Hodně světlých fotek ze života;;;
+;;Kratší odstavce, vzdušný layout;;;
+;;Tahle stránka má za úkol, aby si člověk řekl:;;;
+;;„Tady ti psi žijí krásný život. Tady chci štěně.“;;;
+;;;;;
+;;;;;
+;;;TECHNICKÉ POŽADAVKY;;
+;;;Funkce;Popis;Poznámka
+;;;Editor obsahu, Fotky v textu;Možnost upravovat texty a možnost vkládat fotky mezi odstavce;Ne jen jeden obrázek nahoře
+;;;Galerie;Možnost přidat více fotek ze života;Samostatný blok
+;;;CTA na konci;Tlačítka „Naši psi“ a „Štěňata“;Prolinkování
+;;;Responzivita;Fotky i texty čitelné na mobilu;—
+
+;;;;;
+;STRÁNKA „NAŠI PSI“ (STRUKTURA);;;;
+;Pořadí sekce;Název sekce;Účel sekce;Obsah;Poznámky pro vývojáře
+;1;Úvodní blok;Představení významu chovných psů;Krátký text: „Naši psi jsou základem chovu Aurum Vellum. Při výběru klademe důraz na zdraví, vyrovnanou povahu a typický exteriér retrívra.“;Jemná fotka psa v pozadí, elegantní vzhled
+;2;Rozdělení psů;Navigace na podkategorie;Tři vizuální bloky: Feny / Psi (krycí) / Odchovy;Každý blok klikací, vede na podstránku
+;3;Důraz na zdraví a povahu;Posílení důvěry;Krátký odstavec: že všichni chovní psi splňují zdravotní podmínky a mají vyrovnaný temperament;Může být zvýrazněné ikonami
+;4;Výzva k prokliknutí;Navigace dál;Text: „Poznejte jednotlivé psy blíže v jejich profilech.“;Bez tlačítka – kliká se na bloky výše
+;;;;;
+;;;;;
+;PODSTRÁNKA „FENY“ / „PSI“;;;;
+;;Prvek;;Obsah;Poznámky pro vývojáře
+;;Nadpis stránky;;Např. „Naše chovné feny“;Stejný styl i pro psy
+;;Úvodní text;;Krátké vysvětlení role fen/psů v chovu;2–3 věty
+;;Seznam psů;;Každý pes ve vlastním „kartičkovém“ bloku;Mřížka (grid)
+;;Obsah kartičky psa;;Fotka, jméno, krátká charakteristika (1 věta), tlačítko „Profil psa“;Fotky ve stejném stylu
+;;;;;
+;DETAIL PROFILU JEDNOHO PSA;;;;
+;Pořadí sekce;Název sekce;;Obsah;Poznámky pro vývojáře
+;1;Hero fotka psa;;Velká portrétní fotka psa;Světlé pozadí, přirozené světlo
+;2;Základní informace;;Jméno, chovatelský název, datum narození;Přehledný blok
+;3;Povaha;;Slovní popis temperamentu;Spíš lidský tón
+;4;Zdravotní testy;;Výpis testů (DKK, DLK, oči, DNA…);Formou seznamu nebo tabulky
+;5;Úspěchy;;Výstavy, zkoušky, tituly;Pokud nejsou, sekce se skryje
+;6;Rodokmen;;Krátké info o linii;Možnost přidat náhled rodokmenu
+;7;Fotogalerie;;Více fotek psa;Galerie pod sebou
+;8;Navigace dál;;Odkaz zpět na seznam psů;Tlačítko „Zpět na naše psy“
+;;;;;
+;;;;;
+;;;TECHNICKÉ POŽADAVKY;;
+;;;Funkce;Popis požadavku;Poznámka pro vývojáře
+;;;Datový model „Pes“;Každý pes jako položka (jméno, kategorie, texty, testy, fotky);Přidávání v administraci
+;;;Kategorie;Feny / Psi (krycí) / Odchovy;Filtrování nebo podstránky
+;;;Šablona profilu;Jednotná šablona profilu pro všechny psy;Opakovaně použitelná
+;;;Galerie psa;Více fotek + lightbox;Optimalizace
+;;;Zdravotní testy;Strukturované pole (tabulka);Snadné doplňování
+;;;Skrytí prázdných sekcí;Např. úspěchy jen když existují;Podmíněné bloky
+;;;Propojení na vrhy;U psa zobrazit „Vrh/y“ (volitelně);Prolinkování
+
+;;;;;
+;STRÁNKA „ŠTĚŇATA“ (HLAVNÍ PŘEHLED);;;;
+;;;;;
+;Pořadí sekce;Název sekce;Účel sekce;Obsah;Poznámky pro vývojáře
+;1;Úvodní blok;Představení přístupu k odchovu;Text: „Každý vrh v chovatelské stanici Aurum Vellum plánujeme s důrazem na zdraví, povahu a vhodnost spojení. Štěňata odchováváme doma, s maximální péčí a socializací.“;Jemná fotka štěňat v pozadí
+;2;Rozdělení vrhů;Navigace;3 bloky: Aktuální vrh / Plánované vrhy / Minulé vrhy;Každý blok klikací
+;3;Jak probíhá odchov;Budování důvěry;Popis socializace, domácího prostředí, zvykání na ruch, manipulaci;Ikony nebo odrážky
+;4;Co dostane štěně;Praktické info;Seznam: PP, očkování, čip, pet pas, kupní smlouva, balíček do začátku;Přehledné ikonky
+;5;Koho hledáme;Filtr majitelů;Text o výběru zodpovědných rodin, ne do kotce, zájem o kontakt;Důležitá sekce
+;6;Výzva k akci;Přesměrování na kontakt;Text: „Máte zájem o štěně? Rádi se o vás dozvíme více.“;Tlačítko „Kontakt / formulář“
+;;;;;
+;;;;;
+;PODSTRÁNKA „AKTUÁLNÍ VRH“;;;;
+;;;;;
+;Pořadí sekce;Název sekce;;Obsah;Poznámky
+;1;Nadpis vrhu;;Např. „Vrh A – léto 2026“;Možnost měnit u každého vrhu
+;2;Spojení rodičů;;Fena × Pes (jména + fotky + odkazy na jejich profily);Dvě fotky vedle sebe
+;3;Základní informace;;Datum narození, počet štěňat, předpokládaný odběr;Přehledný blok
+;4;O vrhu;;Text o povaze rodičů, očekávání od štěňat;Volný text
+;5;Vývoj štěňat;;Krátké aktuality (např. 2 týdny, 4 týdny…);Možnost přidávat postupně
+;6;Fotogalerie;;Fotky štěňat;Galerie
+;7;Informace pro zájemce;;Připomenutí podmínek odběru;Odkaz na obecnou stránku Štěňata
+;8;Tlačítko;;„Mám zájem o štěně z tohoto vrhu“;Vede na kontaktní formulář
+;;;;;
+;PODSTRÁNKA „PLÁNOVANÉ VRHY“;;;;
+;;;;;
+;;Sekce;;Obsah;
+;;Úvod;;Text, že plánované vrhy jsou orientační;
+;;Přehled spojení;;Fena × plánovaný pes + přibližné období;
+;;Poznámka;;Spojení se může změnit dle okolností;
+;;;;;
+;PODSTRÁNKA „MINULÉ VRHY“;;;;
+;;;;;
+;;Sekce;;Obsah;
+;;Přehled vrhů;;Každý vrh jako blok (rok, rodiče);
+;;Detail vrhu;;Fotky štěňat, krátká informace;
+;;Odkaz na odchovy;;Propojení na psy z těchto vrhů;
+;;;;;
+;;;TECHNICKÉ POŽADAVKY;;
+;;;Funkce;Popis požadavku;Poznámka
+;;;Datový model „Vrh“;Každý vrh jako samostatná položka (název, datum narození, odběr, rodiče, popis, galerie, stav);Nutné pro budoucí vrhy
+;;;Stav vrhu;Pole: Aktuální / Plánovaný / Minulý;Řídí kam se vrh zobrazuje
+;;;Detail vrhu;Šablona detailu vrhu opakovaně použitelná;Bez kódování pro každý vrh
+;;;Propojení rodičů;Odkazy z vrhu na profily rodičů;Interní propojení
+;;;Galerie vrhu;Více fotek + lightbox;Optimalizace fotek
+;;;Aktuality vrhu;Možnost přidávat „zápisky“ (datum + text + fotky);Např. „3 týdny“, „6 týdnů“…
+;;;Přesměrování do kontaktu;CTA „Mám zájem o štěně z tohoto vrhu“;Ideálně předvyplní ve formuláři, o jaký vrh jde
+;;;Archiv;Automatické řazení minulých vrhů podle data;—
+;;;Skrytí prázdných bloků;Pokud nejsou aktuality, nezobrazí se;Čistý design
+
+;;;;;
+;STRÁNKA „ZDRAVÍ A DOKUMENTACE“;;;;
+;Stránka „Zdraví a dokumentace“ musí umožňovat kombinaci textu, přehledných seznamů/tabelek a náhledů dokumentů. Obsah musí být snadno aktualizovatelný. Dokumenty se mají zobrazovat jako obrázky s možností zvětšení, nikoli ke stažení. Jednotlivé sekce (např. výstavy) se mají zobrazit jen pokud obsah existuje.;;;;
+;;;;;
+;Pořadí sekce;Název sekce;Účel sekce;Obsah;Poznámky pro vývojáře
+;1;Úvodní blok;Vysvětlení důležitosti zodpovědného chovu;Text: „Zodpovědný chov je pro nás samozřejmostí. Naši psi splňují chovné podmínky a absolvují zdravotní i genetická vyšetření.“;Čistý design, bez přeplnění
+;2;Průkaz původu (PP);Vysvětlení významu PP;Krátké vysvětlení, co PP znamená (původ, kontrolovaný chov, dohledatelnost předků);Možnost zobrazit ukázku PP (citlivé údaje rozmazat)
+;3;Zdravotní vyšetření;Přehled základních testů;Výpis: DKK, DLK, vyšetření očí, srdce apod.;Formou seznamu nebo ikon
+;4;Genetické testy;DNA vyšetření;Např. PRA, ICT a další dle plemene;Stručné vysvětlení, co znamená „clear“
+;5;Testy u jednotlivých psů;Propojení na profily;Věta: „Detailní výsledky najdete v profilech jednotlivých psů.“;Odkaz na stránku Naši psi
+;6;Osvědčení o chovatelské stanici;Potvrzení registrace chovky;Fotografie nebo sken osvědčení o registraci názvu Aurum Vellum;Samostatný blok
+;7;Výstavy a zkoušky;Doplňující kvalita psů;Text o účasti na výstavách / pracovních zkouškách;Fotky diplomů jen jako doplněk
+;8;Závěrečné ujištění;Posílení důvěry;Text: „Naším cílem je chovat zdravé, vyrovnané psy vhodné do rodin.“;Krátké shrnutí
+;;;;;
+;;;;;
+;Styl této stránky;;;;
+;;;;;
+;;Hodně bílé plochy;;;
+;;Zlaté jemné nadpisy;;;
+;;Dokumenty spíš jako doplněk, ne galerie razítek;;;
+;;Přehlednost > množství;;;
+;;;;;
+;;;TECHNICKÉ POŽADAVKY;;
+;;;Funkce;Popis požadavku;Poznámka pro vývojáře
+;;;Strukturované sekce;Stránka rozdělena na samostatné bloky (PP, zdravotní testy, genetické testy, osvědčení, výstavy);Každý blok samostatně editovatelný
+;;;Možnost textové editace;Text u každé sekce musí jít upravovat bez zásahu do kódu;Běžný editor
+;;;Přehled zdravotních testů;Možnost vytvořit seznam nebo tabulku testů;Např. DKK, DLK, oči, srdce
+;;;Propojení na profily psů;Odkaz z této stránky na konkrétní psy;Interní odkazy
+;;;Dokumenty (PP, osvědčení);Možnost vložit náhled dokumentu jako obrázek;Klikací zvětšení (lightbox)
+;;;Ochrana citlivých údajů;Možnost vložit dokument jen jako obrázek, ne ke stažení;Bez PDF ke stažení veřejně
+;;;Genetické testy;Možnost uvádět název testu + výsledek (např. Clear);Přehledná forma, ne jen obrázek certifikátu
+;;;Možnost budoucího rozšíření;Přidání dalších testů nebo dokumentů;Stránka nesmí být „natvrdo“ uzavřená
+;;;Galerie diplomů;Možnost vložit více diplomů/fotek z výstav;Volitelný blok – pokud nebude obsah, nezobrazí se
+;;;Skrytí prázdných sekcí;Pokud některá část nebude použita, nezobrazí se;Podmíněné zobrazení
+;;;Responzivita dokumentů;Dokumenty i tabulky musí být čitelné na mobilu;Přizpůsobení šířky obrazovce
+;;;Jednotný vizuální styl;Dokumenty zobrazit čistě, ne jako neuspořádanou galerii;Zachovat elegantní vzhled webu
+
+;;;;;
+;STRÁNKA „NOVINKY & ŽIVOT S NÁMI“;;;;
+;Stránka „Novinky & život s námi“ bude fungovat jako blog. Potřebuji možnost přidávat články s kombinací textu, jednotlivých fotografií v průběhu textu, samostatných galerií a vložených videí (např. YouTube). Články musí jít propojovat s konkrétními psy a vrhy.;;;;
+;;;;;
+;Pořadí sekce;Název sekce;Účel sekce;Obsah;Poznámky pro vývojáře
+;1;Úvodní blok;Představení stránky;Krátký text: „Na této stránce sdílíme novinky z naší chovatelské stanice, vývoj vrhů i každodenní život našich psů.“;Jemná lifestylová fotka v pozadí
+;2;Přehled článků;Hlavní obsah stránky;Seznam příspěvků (náhledový obrázek + nadpis + krátký úryvek textu + tlačítko „Číst více“);Blogový styl, řazeno od nejnovějšího
+;3;Typy příspěvků;Obsahové zaměření;Vývoj štěňat, novinky o vrzích, úspěchy psů, výstavy, běžný život, společné aktivity;Není viditelná sekce, spíš zadání pro strukturu blogu
+;4;Detail článku;Stránka jednoho příspěvku;Nadpis, datum, hlavní fotka, text, galerie fotek;Možnost vkládat více fotek
+;5;Propojení se štěňaty;Navigace;U článků o vrhu tlačítko „Zobrazit detail vrhu“;Propojení s částí Štěňata
+;6;Propojení se psy;Navigace;U článků o konkrétním psovi odkaz na jeho profil;Propojení s Naši psi
+;7;Navigace mezi články;Pohodlí uživatele;„Starší články“ / stránkování;Klasická blogová funkce
+;;;;;
+;Funkce této stránky;;;;
+;;Ukazuje reálný život chovky;;;
+;;Buduje vztah se zájemci ještě před rezervací štěněte;;;
+;;Pomáhá s SEO (vývojář ocení);;;
+;;;;;
+;Styl obsahu;;;;
+;;Přirozený, osobní tón;;;
+;;Hodně fotek;;;
+;;Kratší odstavce;;;
+;;Datum u každého příspěvku;;;
+;;;;;
+;Tahle stránka říká:;;;;
+;„Tady se opravdu žije se psy, není to jen chov na papíře.“;;;;
+;;;;;
+;;;;;
+;;TECHNICKÉ POŽADAVKY;;;
+;;Oblast stránky;Co se zde bude vkládat;Jak má být technicky řešeno;Poznámka pro vývojáře
+;;Náhled článků (hlavní přehled);Úvodní fotka ke každému článku;Každý článek má „náhledový obrázek“;Zobrazuje se v seznamu článků
+;;Úvod článku;Text + 1 hlavní fotka;Možnost kombinovat text a obrázek;Obrázek nahoře pod nadpisem
+;;Tělo článku;Text průběžně prokládaný fotkami;Editor musí umožnit vkládat fotky mezi odstavce;Ne jen galerie na konci
+;;Fotogalerie;Více fotek z jedné události (např. vrh 4 týdny);Samostatný blok „Galerie“;Klikací zvětšení fotek
+;;Videa;Krátká videa štěňat nebo psů;Vkládání přes odkaz (YouTube);Ne nahrávat přímo na web
+;;Aktualizace vývoje vrhu;Opakované příspěvky k jednomu vrhu;Možnost přidávat více článků ke stejné kategorii (např. „Vrh A 2026“);Kategorie nebo štítky článků
+;;Propojení s jinými částmi webu;Odkaz na detail vrhu nebo profil psa;Možnost vkládat interní odkazy;Např. tlačítko „Detail vrhu“
+;;Formát článků;Datum + nadpis + obsah;Automatické zobrazení data publikace;Blogový styl
+;;;;;
+;;;Funkce;Popis požadavku;Poznámka pro vývojáře
+;;;Blogový systém;Přidávání článků (nadpis, datum, perex, obsah, obrázek);Řazení od nejnovějšího
+;;;Náhledový obrázek;Každý článek má hlavní obrázek pro výpis;Povinné pole
+;;;Fotky v textu;Možnost vkládat fotky mezi odstavce;Editor musí umět
+;;;Galerie;Samostatný blok galerie v článku;Lightbox
+;;;Videa;Vkládání videí přes embed (YouTube/Vimeo);Ne upload na server
+;;;Kategorie/štítky;Např. „Vrh A“, „Výstavy“, „Život“;Snadné filtrování
+;;;Interní odkazy;Propojení článků na psa nebo vrh;Tlačítko/odkaz „Detail vrhu“
+;;;Sdílení;Tlačítka sdílení (FB) volitelně;Ne nutné, ale užitečné
+
+;;;;;
+;;;;;
+;Pořadí sekce;Název sekce;Účel;Obsah;Poznámky
+;1;Úvodní blok;Přátelské navázání kontaktu;Text: „Máte zájem o štěně z naší chovatelské stanice nebo se chcete na něco zeptat? Budeme rádi, když se nám ozvete.“;Jemná fotka psa nebo tebe se psem
+;2;Kontaktní údaje;Základní informace;Jméno chovatele, lokalita (bez přesné adresy), e-mail, telefon;Ikonky u údajů
+;3;Sociální sítě;Alternativní způsob spojení;Ikony a odkazy na Facebook a Instagram;Otevírat v novém okně
+;4;Formulář pro zájemce;Hlavní funkce stránky;Nadpis: „Formulář pro zájemce o štěně“ + krátké vysvětlení, že informace pomohou vybrat vhodnou rodinu;Formulář pod tím
+;5;Závěrečná poznámka;Nastavení očekávání;Text: „Na zprávy odpovídáme postupně. Děkujeme za trpělivost.“;Krátké uklidnění
+;;;;;
+;;;;;
+;FORMULÁŘ PRO ZÁJEMCE (OBSAH POLÍ);;;;
+;;;;;
+;;Název pole;Typ pole;Povinné;Účel
+;;Jméno a příjmení;Text;Ano;Identifikace
+;;E-mail;E-mail;Ano;Odpověď
+;;Telefon;Text;Ano;Rychlý kontakt
+;;O jaký vrh máte zájem?;Výběr (dropdown);Ano;Aktuální vrh / Plánovaný vrh / Jen předběžný zájem
+;;Kde bydlíte?;Text;Ano;Město + typ bydlení
+;;Bydlení;Výběr;Ano;Byt / Dům se zahradou / Dům bez zahrady
+;;Zkušenosti se psy;Delší text;Ano;Přehled zkušeností
+;;Kolik času bude pes sám doma?;Text;Ano;Posouzení podmínek
+;;Co od psa očekáváte?;Delší text;Ano;Rodinný pes / Sport / Výstavy / Společník
+;;Máte další zvířata?;Text;Ne;Doplňující info
+;;Poznámka;Delší text;Ne;Cokoli dalšího
+;;Souhlas se zpracováním osobních údajů;Checkbox;Ano;GDPR
+;;;;;
+;;;;;
+;;;;;
+;;;KONTAKT TECHNICKÉ POŽADAVKY;;
+;;;Funkce;Popis požadavku;Poznámka pro vývojáře
+;;;Editovatelné kontakty;E-mail a telefon upravitelné v administraci;Ne natvrdo v kódu
+;;;Klikací údaje;Telefon (tel:) a e-mail (mailto:);Usnadnit mobilním uživatelům
+;;;Responzivita;Formulář dobře čitelný na mobilu;Pole pod sebou
+;;;;;
+;;;FORMULÁŘ (TECHNICKÉ POŽADAVKY);;
+;;;Funkce;Popis požadavku;Poznámka
+;;;Odeslání e-mailem;Odeslat vyplněný formulář na e-mail chovatele;Ideálně i kopie odesílateli
+;;;Potvrzení o odeslání;Zobrazit hlášku „Děkujeme za zprávu…“;Bez přesměrování pryč
+;;;Předvyplnění vrhu;Pokud uživatel přijde z detailu vrhu, pole „O jaký vrh máte zájem“ se předvyplní;Propojení s vrhy
+;;;Ochrana proti spamu;reCAPTCHA nebo honeypot;Nutné
+;;;GDPR souhlas;Povinný checkbox bez kterého nelze odeslat;Text upravitelný
+;;;Validace polí;Kontrola e-mailu, povinných polí;Chybová hlášení přehledná
+;;;Uložení zpráv;Volitelně ukládat do administrace;Praktické do budoucna
+;;;Antispam ochrana;Limit odeslání formuláře z jedné IP;Ochrana proti botům
+
+;;;;
+;;;;
+;E-SHOP (PŘÍPRAVA DO BUDOUCNA);;;
+;;;;
+;Funkce;Popis požadavku;Poznámka pro vývojáře;
+;Položka v menu;„E-shop“ zatím může být skrytý nebo vést na stránku „Připravujeme“;Snadná aktivace později;
+;Systém e-shopu;Web musí umožnit napojení na e-shop řešení (např. WooCommerce apod.);Dle použité platformy webu;
+;Produkty;Struktura pro produkty (název, popis, cena, fotky);Připravenost do budoucna;
+;Kategorie produktů;Např. Výbavičky pro štěňata / Obojky / Merch Aurum Vellum;Škálovatelné;
+;Fotogalerie produktu;Více fotek u produktu;Lightbox;
+;Objednávkový proces;Košík, objednávka, e-mail potvrzení;Nemusí být aktivní hned;
+;Platby;Možnost napojení platební brány;Aktivuje se až později;
+;Doprava / osobní odběr;Nastavitelné možnosti;Do budoucna;
+
+;;;;;
+;AKCE & REZERVACE (OBSAH STRÁNKY);;;;
+;;;;;
+;Pořadí sekce;Název sekce;Účel;Obsah;Poznámky pro vývojáře
+;1;Úvodní blok;Vysvětlení účelu akcí;Text např.: „Rádi se potkáváme s budoucími i stávajícími majiteli našich štěňat. Pořádáme menší setkání a večery se štěňaty v klidném prostředí.“;Jemná fotka štěňat / setkání
+;2;Přehled nadcházejících akcí;Hlavní část stránky;Seznam připravovaných akcí;Každá akce jako samostatná karta
+;3;Detail akce;Informace o konkrétní akci;Název, datum, čas, místo (obec), popis průběhu;Kliknutí otevře detail
+;4;Kapacita;Informace o omezení počtu lidí;Text např. „Kapacita je omezená, aby byl zajištěn klid pro štěňata.“;Viditelné u každé akce
+;5;Tlačítko rezervace;Výzva k akci;„Rezervovat místo“;Vede na rezervační formulář
+;6;Proběhlé akce (volitelné);Archiv;Fotky a krátké shrnutí minulých akcí;Může být až později
+;;;;;
+;;;;;
+;DETAIL JEDNÉ AKCE (OBSAH);;;;
+;;;;;
+;;Sekce;;Obsah;
+;;Název akce;;Např. „Večer se štěňaty – vrh A“;
+;;Datum a čas;;Konkrétní termín;
+;;Místo;;Obec / region (ne přesná adresa veřejně);
+;;Popis akce;;Co účastníky čeká (seznámení se štěňaty, povídání o plemeni, dotazy);
+;;Kapacita;;Např. „Max. 6 rodin“;
+;;Počet volných míst;;Automaticky zobrazovaný údaj;
+;;Upozornění;;Např. že akce je klidná, bez malých dětí bez dozoru apod.;
+;;Tlačítko;;„Rezervovat místo“;
+;;;;;
+;;;;;
+;REZERVAČNÍ FORMULÁŘ (OBSAH POLÍ);;;;
+;;;;;
+;;Název pole;Typ;Povinné;Účel
+;;Jméno a příjmení;Text;Ano;Identifikace
+;;E-mail;E-mail;Ano;Potvrzení rezervace
+;;Telefon;Text;Ano;Kontakt při změně
+;;Počet osob;Číslo / výběr;Ano;Kontrola kapacity
+;;Máte zájem o konkrétní vrh?;Text;Ne;Kontext
+;;Zkušenosti se psy;Krátký text;Ne;Přehled o návštěvnících
+;;Poznámka;Delší text;Ne;Specifické dotazy
+;;Souhlas se zpracováním údajů;Checkbox;Ano;GDPR
+;;;;;
+;;;;;
+;;;AKCE & REZERVACE (TECHNICKÉ POŽADAVKY);;
+;;;Funkce;Popis požadavku;Poznámka pro vývojáře
+;;;Datový model „Akce“;Každá akce jako samostatná položka;Název, datum, čas, místo, kapacita, popis
+;;;Stav akce;Plánovaná / Plná / Proběhla;Automaticky dle kapacity nebo ručně
+;;;Kapacita;Nastavitelný max. počet účastníků;Např. 6 rodin
+;;;Počet rezervací;Systém odečítá obsazená místa;Zamezí přeplnění
+;;;Rezervační formulář;Odeslání údajů + napojení na konkrétní akci;Musí vědět, na jakou akci se hlásí
+;;;Potvrzovací e-mail;Automatický e-mail účastníkovi;+ kopie tobě
+;;;Uzavření rezervací;Po naplnění se skryje tlačítko rezervace;Zobrazí „Kapacita naplněna“
+;;;Čekací listina (volitelné);Možnost sbírat náhradníky;Není nutné hned
+;;;Kalendářový přehled;Možnost zobrazit akce v kalendáři;Volitelné
+;;;Archiv akcí;Proběhlé akce se přesunou do archivu;Automaticky po datu
+;;;Propojení s vrhy;Možnost propojit akci s konkrétním vrhem;Odkaz na stránku vrhu
+;;;Responzivita;Rezervace pohodlná i na mobilu;Velká tlačítka
+;;;Antispam;Ochrana formuláře;reCAPTCHA/honeypot
+;;;;;
+;;;;;
+;;;;;
+;;Stránka „Akce & rezervace“ musí fungovat jako jednoduchý rezervační systém s omezenou kapacitou. Každá akce je samostatná položka s datem, kapacitou a možností online rezervace. Systém musí automaticky hlídat počet přihlášených a po naplnění rezervace uzavřít.;;;
+
+;;;;
+;VIZUÁLNÍ STYL WEBU „Aureum Vellum“;;;
+;Vizuální styl webu Aureum Vellum má působit elegantně, jemně a světle. Dominantní je bílá barva, doplněná tlumenou zlatou jako akcentem. Design má být vzdušný, ;;;
+;s dostatkem prostoru, bez rušivých prvků. Fotografie mají být světlé, teplé a přirozené. Celkový dojem: klid, důvěra, rodinné prostředí a jemný luxus.;;;
+;;;;
+;Oblast;Zadání;Detail / vysvětlení;Poznámka pro vývojáře
+;Celkový dojem;Elegantní, jemný, světlý;Styl „luxusní jednoduchost“, žádná přeplácanost;Vzdušný layout
+;Hlavní barva pozadí;Bílá;Čisté bílé plochy;Dostatek prostoru mezi prvky
+;Akcentová barva;Zlatá;Používat střídmě;Tlačítka, linky, ikonky
+;Textová barva;Tmavě šedá (ne čistá černá);Jemnější kontrast;Lepší čitelnost
+;Sekundární pozadí;Velmi světlá krémová (volitelné);Pro oddělení sekcí;Např. u vrhů nebo ikonových bloků
+;;;;
+;BARVY (orientační);;;
+;Použití;Barva;Poznámka;
+;Pozadí;#FFFFFF;Hlavní plocha;
+;Zlatý akcent;#C9A24D (nebo podobná tlumená zlatá);Ne křiklavá;
+;Text hlavní;#333333;Nadpisy a text;
+;Text vedlejší;#666666;Doplňkové info;
+;Jemné pozadí sekcí;#F8F6F1;Velmi jemný kontrast;
+;;;;
+;TYPOGRAFIE;;;
+;Prvek;Styl;Charakter;
+;Logo / název;Elegantní serif font;Luxusní, jemný, ženský nádech;
+;Nadpisy;Serif nebo jemný moderní font;Lehkost, vzdušnost;
+;Běžný text;Čitelný sans-serif;Moderní a přehledný;
+;Tlačítka;Velká písmena nebo jemné kapitálky;Elegantní, ne křiklavé;
+;;;;
+;STYL FOTEK;;;
+;Požadavek;Popis;;
+;Světlo;Světlé, přirozené, teplé tóny;;
+;Prostředí;Domov, příroda, deky, tráva;;
+;Styl;Jemný, rodinný, klidný;;
+;Vyhnout se;Tmavé pozadí, ostré kontrasty, křiklavé barvy;;
+;;;;
+;TLAČÍTKA A IKONY;;;
+;Prvek;Styl;;
+;Tlačítka;Zlatý obrys nebo jemná zlatá výplň;;
+;Hover efekt;Zesílení barvy nebo jemné ztmavení;;
+;Ikony;Jednoduché lineární, zlaté nebo šedé;;
+;Tvar;Jemně zaoblené rohy;;
+;;;;
+;ROZLOŽENÍ (LAYOUT);;;
+;Prvek;Zadání;;
+;Šířka obsahu;Vzdušná, ne příliš široká;;
+;Mezery;Hodně bílého prostoru mezi sekcemi;;
+;Sekce;Jasně oddělené, ale bez tvrdých linií;;
+;Styl;Moderní, klidný, nepřeplácaný;;
+;;;;
+;;;;
+;SLOGAN;;;
+;„Zlatý začátek života.“;;;
+;;;;
+;;;;
+;;;;
+;LOGO;;;
+;;;;
+;Vstup: foto fenky (přiložené);;;
+;Styl: jemné zlaté tóny, čisté, elegantní, bílo–zlatá typografie;;;
+;Texty (přesně):;;;
+;;;;
+;Hlavní: Aureum Vellum;;;
+;;;;
+;Slogan: Zlatý začátek života;;;
+;;;;
+;Doplňek: Chovatelská stanice retrívrů;;;
+;;;;
+;Dvě verze výstupu:;;;
+;;;;
+;A) Obdélník (horizontální) – na web hlavičku;;;
+;;;;
+;B) Kruh (profilovka/badge) – na IG/FB;;;
+;;;;
+;Úpravy fotky:;;;
+;;;;
+;jemná „golden“ tonace (teplejší, lehce zlatý nádech);;;
+;;;;
+;mírně snížit saturaci, ať to není křiklavé;;;
+;;;;
+;lehce zvednout světla, snížit kontrast (soft look);;;
+;;;;
+;přidat jemnou bílou mlhu/overlay pro čitelnost textu;;;
+;;;;
+;Text:;;;
+;;;;
+;barva textu: zlatá (tlumená) + případně tmavě šedá pro doplňky;;;
+;;;;
+;žádné stíny, žádné 3D;;;
+;;;;
+;jemné rozestupy písmen (tracking);;;
+;;;;
+;;;;
+;;;;
+;Rozvržení – OBDELNÍK (doporučení);;;
+;;;;
+;Rozměr: 1600×900 nebo 1920×1080 (na web super);;;
+;Kompozice:;;;
+;;;;
+;Fenka vlevo (nebo na středu), text vpravo v „čisté“ ploše;;;
+;;;;
+;Nebo text přes fotku, ale s jemným přechodem (overlay);;;
+;;;;
+;Nejčistší varianta (doporučuju):;;;
+;;;;
+;Fotka přes celý obdélník;;;
+;;;;
+;Přes ni z pravé strany jemný bílý gradient (aby text krásně vynikl);;;
+;;;;
+;Text zarovnaný na střed výšky pravého pruhu:;;;
+;;;;
+;Aureum Vellum (velké);;;
+;Zlatý začátek života (menší);;;
+;CHOVATELSKÁ STANICE RETRÍVRŮ (nejmenší, roztažené mezery);;;
+;;;;
+;;;;
+;;;;
+;Rozvržení – KRUH (profilovka);;;
+;;;;
+;Rozměr: 1080×1080 (IG/FB ideál);;;
+;Kompozice:;;;
+;;;;
+;Výřez hlavy fenky do kruhu (nejlépe 3/4 pohled, oči v horní třetině);;;
+;;;;
+;Dole přes fotku jemný bílý „soft“ pruh/overlay pro text;;;
+;;;;
+;Text v kruhu dej jednoduše do 2 řádků (v profilu musí být čitelné!):;;;
+;;;;
+;Aureum Vellum (největší);;;
+;;;;
+;Zlatý začátek života (menší);;;
+;;;;
+;„Chovatelská stanice retrívrů“ může být:;;;
+;;;;
+;buď úplně malinko pod tím (pokud se vejde),;;;
+;;;;
+;nebo raději až do obdélníku (v kruhu to často není čitelné na mobilu).;;;
